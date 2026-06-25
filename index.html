@@ -2,28 +2,23 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-color=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enlace J&M - La Boda Mágica</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="assets/EscudoJM.png">
 </head>
 <body>
 
-<!-- Pantalla de Login: La Dama Gorda -->
 <div id="pantalla-bloqueo" class="contenedor">
-    <h2>El Retrato de la Dama Gorda</h2>
+    <h2>El Retrato de la Senora Gorda</h2>
     <p>Solo los invitados con la palabra clave pueden acceder al Gran Comedor...</p>
 
-    <!-- Grupo de Contraseña con el Ojo -->
     <div class="grupo-contrasena">
         <input type="password" id="input-contrasena" placeholder="Di la contraseña...">
         <button type="button" onclick="togglePassword()" class="btn-ojo">
-            <!-- Icono Ojo Abierto (por defecto) -->
             <svg id="icono-ojo-abierto" class="icono-ojo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                 <circle cx="12" cy="12" r="3"/>
             </svg>
-            <!-- Icono Ojo Cerrado (oculto por defecto) -->
             <svg id="icono-ojo-cerrado" class="icono-ojo" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
                 <line x1="1" y1="1" x2="23" y2="23"/>
@@ -34,20 +29,20 @@
     <button onclick="verificarContrasena()" class="btn-magico">Revelar</button>
 
     <p id="mensaje-error" style="color: #740001; display: none; margin-top: 10px;">
-        ¡Santo y Seña incorrecta! ¡Fuera de aquí antes de que llame a Filch!
+        ¡Contraseña incorrecta! ¡Fuera de aquí antes de que llame a Filch!
     </p>
 </div>
 
-<!-- Contenido Principal de la Web (Oculto por defecto) -->
 <div id="contenido-magico" class="contenedor" style="display: none;">
     <img src="assets/EscudoJM.png" alt="Escudo J&M" class="escudo-boda">
+
     <h1>El Juramento Inquebrantable de J y M</h1>
     <p class="intro-magica">Nos complace invitaros a celebrar nuestro gran día. Preparad vuestras mejores túnicas.</p>
 
     <div class="grid-informacion">
 
         <div class="tarjeta-magica">
-            <h3>Red Flu y Trasladores (Ubicación)</h3>
+            <h3>Red Flu y Trasladores (Ubicacion)</h3>
             <p><strong>La Ceremonia:</strong> Se celebrará en Fortuna a las [00:00]. En [Nombre de la Iglesia/Juzgado/Finca].</p>
             <p><strong>El Banquete:</strong> A continuación, el Gran Comedor nos espera en [Nombre de la Finca/Restaurante].</p>
             <hr class="separador-magico">
@@ -65,12 +60,12 @@
         </div>
 
         <div class="tarjeta-magica">
-            <h3>Aprendices de Mago (Niños)</h3>
+            <h3>Aprendices de Mago (Ninos)</h3>
             <p>Nuestros pequeños estarán correteando por allí, así que contaremos con animadores y actividades especiales para que las nuevas generaciones de Hogwarts se lo pasen en grande mientras los adultos disfrutan de la fiesta.</p>
         </div>
 
         <div class="tarjeta-magica">
-            <h3>Cámara de Gringotts (Regalos)</h3>
+            <h3>Camara de Gringotts (Regalos)</h3>
             <p>Vuestra presencia es el mejor regalo, pero si deseáis ayudarnos a llenar nuestra cámara acorazada para disfrutar de nuestra luna de miel, podéis enviar vuestros galeones a la siguiente bóveda:</p>
             <p class="cuenta-bancaria">ESXX XXXX XXXX XXXX XXXX</p>
             <p class="nota-pequena"><em>Titulares: J y M</em></p>
