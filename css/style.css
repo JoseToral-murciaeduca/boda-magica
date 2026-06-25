@@ -100,16 +100,17 @@ input:focus {
     display: inline-block;
     background-color: #740001; /* Burdeos Gryffindor */
     color: #d3a625; /* Dorado */
-    padding: 10px 20px;
+    padding: 12px 30px; /* Un poco más de espacio interior para respirar */
     text-decoration: none;
     border: 2px solid #d3a625;
-    font-weight: bold;
+    font-weight: normal; /* Quitamos el bold porque engrosa demasiado estas fuentes */
     cursor: pointer;
     border-radius: 4px;
     transition: 0.3s;
-    font-size: 18px;
+    font-size: 28px; /* Aumentamos el tamaño de la letra considerablemente */
     margin-top: 10px;
-    font-family: 'DearMrPotter', 'Georgia', serif; /* Botones con estilo */
+    font-family: 'DearMrPotter', 'Georgia', serif;
+    letter-spacing: 2px; /* Separamos un poco las letras para que sea más legible */
 }
 
 .btn-magico:hover {
