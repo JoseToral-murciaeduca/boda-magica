@@ -1,0 +1,93 @@
+/* Importación de tipografías mágicas */
+@font-face {
+    font-family: 'PrivetDrive';
+    src: url('../assets/4-privet-drive.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'DearMrPotter';
+    src: url('../assets/dearmrpotter.otf') format('opentype');
+}
+
+/* Estilos Generales */
+body {
+    background-color: #1a0f10; /* Fondo oscuro */
+    color: #f4ebe1; /* Texto color pergamino */
+    font-family: 'PrivetDrive', 'Georgia', serif; /* Fuente principal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+.contenedor {
+    background: rgba(20, 10, 10, 0.8);
+    border: 2px solid #d3a625; /* Borde dorado */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(211, 166, 37, 0.3);
+    max-width: 500px;
+    width: 90%;
+}
+
+.escudo-boda {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+/* Títulos con tipografía destacada */
+h1, h2 {
+    color: #d3a625; /* Dorado */
+    font-family: 'DearMrPotter', 'Georgia', serif;
+    font-weight: normal;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+}
+
+input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #d3a625;
+    background: #f4ebe1;
+    border-radius: 4px;
+    width: 80%;
+    margin-bottom: 15px;
+    font-family: 'Georgia', serif; /* Mantenemos una fuente legible para el input */
+}
+
+.btn-magico {
+    display: inline-block;
+    background-color: #740001; /* Burdeos Gryffindor */
+    color: #d3a625; /* Dorado */
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 2px solid #d3a625;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+    font-size: 18px;
+    margin-top: 10px;
+    font-family: 'DearMrPotter', 'Georgia', serif; /* Botones con estilo */
+}
+
+.btn-magico:hover {
+    background-color: #d3a625;
+    color: #740001;
+    box-shadow: 0 0 10px #d3a625;
+}
+
+/* Animación de error */
+.vibrar {
+    animation: vibracion 0.3s;
+}
+
+@keyframes vibracion {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}

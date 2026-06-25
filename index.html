@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enlace J&M - La Boda Mágica</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Pantalla de Login: La Señora Gorda -->
+<div id="pantalla-bloqueo" class="contenedor">
+    <h2>El Retrato de la Señora Gorda</h2>
+    <p>Solo los invitados con la palabra clave pueden acceder al Gran Comedor...</p>
+
+    <input type="password" id="input-contrasena" placeholder="Di la contraseña...">
+    <button onclick="verificarContrasena()" class="btn-magico">Revelar</button>
+
+    <p id="mensaje-error" style="color: #740001; display: none; margin-top: 10px;">
+        ¡Contraseña incorrecta! ¡Fuera de aquí antes de que llame a Filch!
+    </p>
+</div>
+
+<!-- Contenido Principal de la Web (Oculto por defecto) -->
+<div id="contenido-magico" class="contenedor" style="display: none;">
+    <img src="assets/EscudoJM.png" alt="Escudo J&M" class="escudo-boda">
+    <h1>Bienvenidos al enlace de J & M</h1>
+    <p>Nos complace invitaros a celebrar nuestro gran día.</p>
+
+    <div class="navegacion">
+        <!-- Enlace al formulario de Formspree que guardaremos en rsvp.html -->
+        <a href="rsvp.html" class="btn-magico">Confirmar Asistencia (RSVP)</a>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
