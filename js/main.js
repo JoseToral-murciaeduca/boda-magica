@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function verificarContrasena() {
-    const contrasena = document.getElementById("input-contrasena").value.toLowerCase().trim();
+    const input = document.getElementById("input-contrasena");
+    const contrasena = input.value.toLowerCase().trim();
     const mensajeError = document.getElementById("mensaje-error");
 
     // Puedes cambiar 'caput draconis' por la palabra que vayas a poner en las invitaciones
@@ -18,7 +19,6 @@ function verificarContrasena() {
     } else {
         mensajeError.style.display = "block";
         // Pequeña animación de error (opcional)
-        const input = document.getElementById("input-contrasena");
         input.classList.add("vibrar");
         setTimeout(() => input.classList.remove("vibrar"), 300);
     }
@@ -27,4 +27,21 @@ function verificarContrasena() {
 function desbloquearWeb() {
     document.getElementById("pantalla-bloqueo").style.display = "none";
     document.getElementById("contenido-magico").style.display = "block";
+}
+
+// Función para mostrar/ocultar la contraseña
+function togglePassword() {
+    const input = document.getElementById("input-contrasena");
+    const iconoAbierto = document.getElementById("icono-ojo-abierto");
+    const iconoCerrado = document.getElementById("icono-ojo-cerrado");
+
+    if (input.type === "password") {
+        input.type = "text";
+        iconoAbierto.style.display = "none";
+        iconoCerrado.style.display = "inline";
+    } else {
+        input.type = "password";
+        iconoAbierto.style.display = "inline";
+        iconoCerrado.style.display = "none";
+    }
 }

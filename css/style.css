@@ -46,15 +46,49 @@ h1, h2 {
     letter-spacing: 2px;
 }
 
-input[type="password"] {
+/* Estilos para el grupo de contraseña con el ojo */
+.grupo-contrasena {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 80%; /* Igual que el input original */
+    margin: 0 auto 15px; /* Centrado y margen inferior */
+    border: 1px solid #d3a625; /* Borde dorado unificado */
+    background: #f4ebe1; /* Fondo pergamino */
+    border-radius: 4px;
+}
+
+input[type="password"],
+input[type="text"] {
+    flex-grow: 1; /* El input ocupa el espacio disponible */
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #d3a625;
-    background: #f4ebe1;
-    border-radius: 4px;
-    width: 80%;
-    margin-bottom: 15px;
+    border: none; /* Sin borde para el input individual */
+    background: transparent; /* Fondo transparente */
     font-family: 'Georgia', serif; /* Mantenemos una fuente legible para el input */
+}
+
+input:focus {
+    outline: none; /* Sin outline por defecto de enfoque */
+}
+
+.btn-ojo {
+    padding: 10px;
+    background: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    color: #740001; /* Color burdeos para el ojo */
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-ojo:hover {
+    color: #d3a625; /* Dorado al pasar el ratón */
+}
+
+.icono-ojo {
+    width: 20px;
+    height: 20px;
 }
 
 .btn-magico {
