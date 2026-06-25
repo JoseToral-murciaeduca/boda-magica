@@ -128,3 +128,43 @@ function asignarCasa() {
     resultadoDiv.style.display = 'block';
     inputOculto.value = nombreCasa;
 }
+
+// ==========================================
+// 4. EASTER EGG: LA SNITCH DORADA
+// ==========================================
+
+function lanzarSnitch() {
+    const snitch = document.getElementById('snitch');
+
+    // Solo sale si ya han puesto la contraseña y están dentro de la web
+    if (document.getElementById('layout-principal').style.display !== 'none') {
+        snitch.style.display = 'block';
+
+        // Reiniciamos las clases de animación para que vuelva a volar desde cero
+        snitch.classList.remove('volando');
+        void snitch.offsetWidth; // Truco mágico de JS para forzar el reinicio de CSS
+        snitch.classList.add('volando');
+
+        // La altura a la que sale es aleatoria
+        snitch.style.top = Math.floor(Math.random() * 70) + 10 + '%';
+    }
+
+    // Se programa para volver a salir aleatoriamente entre 20 y 45 segundos después
+    const tiempoAleatorio = Math.floor(Math.random() * 25000) + 20000;
+    setTimeout(lanzarSnitch, tiempoAleatorio);
+}
+
+// Iniciar el reloj de la snitch a los 10 segundos de cargar la web
+setTimeout(lanzarSnitch, 10000);
+
+function atraparSnitch() {
+    const snitch = document.getElementById('snitch');
+    snitch.style.display = 'none'; // Desaparece al tocarla
+
+    // Mostramos el pergamino con el cóctel
+    document.getElementById('modal-secreto').style.display = 'flex';
+}
+
+function cerrarModal() {
+    document.getElementById('modal-secreto').style.display = 'none';
+}

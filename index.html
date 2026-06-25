@@ -87,9 +87,9 @@
             <div class="mapa-merodeador-grande">
                 <div class="ruta-mapa">
                     <span class="lugar el-bonillo">El Bonillo</span>
-                    <div class="huellas huellas-1"></div>
+                    <div class="huellas"><span class="pasos">&#128063;</span></div>
                     <span class="lugar el-banquete">El Banquete</span>
-                    <div class="huellas huellas-2"></div>
+                    <div class="huellas"><span class="pasos">&#128063;</span></div>
                     <span class="lugar fortuna">Fortuna</span>
                 </div>
             </div>
@@ -178,6 +178,16 @@
     </main>
 </div>
 
+<img src="assets/snitch.png" id="snitch" onclick="atraparSnitch()" alt="Snitch Dorada">
+
+<div id="modal-secreto" onclick="cerrarModal()">
+    <div class="contenido-secreto" onclick="event.stopPropagation()">
+        <h2>¡Atrapaste la Snitch!</h2>
+        <p><strong>¡150 puntos para tu casa!</strong></p>
+        <p>Tienes unos reflejos dignos de un Buscador. Enseña este mensaje en la barra libre el día de la boda para reclamar el cóctel especial <em>"Felix Felicis"</em> inventado por Jose.</p>
+        <button class="btn-magico" onclick="cerrarModal()" style="font-size: 16px; padding: 10px;">Travesura Realizada</button>
+    </div>
+</div>
 <script src="js/main.js"></script>
 </body>
 </html>
