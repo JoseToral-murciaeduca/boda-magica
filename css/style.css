@@ -1,19 +1,24 @@
-/* Importación de tipografías mágicas */
+/* Importación de tipografías mágicas con restricción de caracteres */
 @font-face {
     font-family: 'PrivetDrive';
     src: url('../assets/4-privet-drive.otf') format('opentype');
+    /* Obligamos a que solo se use para letras de la A-Z, a-z, números y espacios. 
+       Todo lo demás (ñ, &, acentos) pasará a la siguiente fuente. */
+    unicode-range: U+0020, U+0030-0039, U+0041-005A, U+0061-007A;
 }
 
 @font-face {
     font-family: 'DearMrPotter';
     src: url('../assets/dearmrpotter.otf') format('opentype');
+    /* Obligamos a que solo se use para letras de la A-Z, a-z, números y espacios */
+    unicode-range: U+0020, U+0030-0039, U+0041-005A, U+0061-007A;
 }
 
-/* Estilos Generales */
+/* Estilos Generales (este bloque no cambia, lo mantienes igual) */
 body {
-    background-color: #1a0f10; /* Fondo oscuro */
-    color: #f4ebe1; /* Texto color pergamino */
-    font-family: 'PrivetDrive', 'Georgia', serif; /* Fuente principal */
+    background-color: #1a0f10;
+    color: #f4ebe1;
+    font-family: 'PrivetDrive', 'Georgia', serif; /* Si falla PrivetDrive, usa Georgia */
     display: flex;
     justify-content: center;
     align-items: center;
