@@ -133,6 +133,100 @@ input:focus {
 }
 
 /* =========================================
+   ESTILOS DEL CONTENIDO (TARJETAS E INFO)
+   ========================================= */
+.intro-magica {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #eeba30; /* Dorado brillante */
+    font-style: italic;
+}
+
+.grid-informacion {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.tarjeta-magica {
+    background: rgba(244, 235, 225, 0.08); /* Fondo claro muy transparente */
+    border: 1px solid #740001;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.tarjeta-magica h3 {
+    color: #d3a625;
+    font-family: 'DearMrPotter', 'Georgia', serif;
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #740001;
+    padding-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.tarjeta-magica p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.lista-horario {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-horario li {
+    margin-bottom: 12px;
+    border-bottom: 1px dashed rgba(211, 166, 37, 0.4);
+    padding-bottom: 8px;
+    font-size: 15px;
+}
+
+.lista-horario span {
+    font-weight: bold;
+    color: #d3a625;
+    font-size: 16px;
+}
+
+.separador-magico {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, #740001, transparent);
+    margin: 15px 0;
+}
+
+.nota-pequena {
+    font-size: 13px !important;
+    color: #c5b39a;
+}
+
+.cuenta-bancaria {
+    font-family: 'Courier New', Courier, monospace; /* Fuente de estilo mecanográfico */
+    font-size: 16px !important;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    text-align: center;
+    border: 1px dashed #d3a625;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #f4ebe1;
+}
+
+.btn-gigante {
+    font-size: 24px;
+    padding: 15px 30px;
+    display: inline-block;
+    width: 80%;
+    margin-top: 10px;
+}
+
+/* =========================================
    ADAPTACIÓN PARA MÓVILES Y TABLETS (RESPONSIVE)
    ========================================= */
 @media screen and (max-width: 600px) {
