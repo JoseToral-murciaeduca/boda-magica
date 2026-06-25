@@ -131,3 +131,38 @@ input:focus {
     75% { transform: translateX(-5px); }
     100% { transform: translateX(0); }
 }
+
+/* =========================================
+   ADAPTACIÓN PARA MÓVILES Y TABLETS (RESPONSIVE)
+   ========================================= */
+@media screen and (max-width: 600px) {
+    body {
+        align-items: flex-start; /* Evita que el contenido se corte por arriba si es más alto que la pantalla */
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .contenedor {
+        padding: 25px 15px; /* Menos espacio interior en móviles */
+        width: 100%;
+    }
+
+    h1, h2 {
+        font-size: 2em; /* Reducimos un poco la fuente mágica para que no ocupe varias líneas */
+    }
+
+    .grupo-contrasena {
+        width: 100%; /* Aprovecha todo el ancho del contenedor */
+    }
+
+    .btn-magico {
+        font-size: 22px; /* Reducimos ligeramente el botón */
+        padding: 10px 20px;
+        width: 100%; /* El botón ocupa todo el ancho, más fácil de pulsar */
+        box-sizing: border-box;
+    }
+
+    .escudo-boda {
+        width: 150px; /* Hacemos el escudo más manejable */
+    }
+}

@@ -132,6 +132,37 @@
             border-color: #740001;
             box-shadow: 0 0 12px #eeba30;
         }
+
+        /* =========================================
+           ADAPTACIÓN PARA MÓVILES (FORMULARIO)
+           ========================================= */
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 15px;
+                align-items: flex-start;
+            }
+
+            .pergamino {
+                padding: 25px 15px; /* Menos margen en los bordes del pergamino */
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .opciones-radio {
+                flex-direction: column; /* En lugar de estar uno al lado del otro, se apilan verticalmente */
+                gap: 12px;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            select,
+            textarea {
+                font-size: 16px; /* Evita el zoom automático en Safari/iOS */
+                padding: 12px; /* Áreas táctiles más grandes */
+            }
+        }
     </style>
 </head>
 <body>
