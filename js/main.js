@@ -1,5 +1,8 @@
-// Comprobar si el invitado ya introdujo la contraseña antes
+// ==========================================
+// 1. SISTEMA DE LOGIN (SEÑORA GORDA)
+// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
+    // Si ya tiene el token guardado en local, entramos directamente
     if (localStorage.getItem("accesoConcedido") === "true") {
         desbloquearWeb();
     }
@@ -10,26 +13,25 @@ function verificarContrasena() {
     const contrasena = input.value.toLowerCase().trim();
     const mensajeError = document.getElementById("mensaje-error");
 
-    // Puedes cambiar 'caput draconis' por la palabra que vayas a poner en las invitaciones
+    // Cambia 'caput draconis' por vuestra contraseña real
     if (contrasena === "caput draconis" || contrasena === "alohomora") {
-        // Guardamos el token para que no tenga que volver a ponerla al recargar
         localStorage.setItem("accesoConcedido", "true");
         desbloquearWeb();
         mensajeError.style.display = "none";
     } else {
         mensajeError.style.display = "block";
-        // Pequeña animación de error (opcional)
         input.classList.add("vibrar");
         setTimeout(() => input.classList.remove("vibrar"), 300);
     }
 }
 
 function desbloquearWeb() {
-    document.getElementById("pantalla-bloqueo").style.display = "none";
-    document.getElementById("contenido-magico").style.display = "block";
+    // Oculta la pantalla que cubre todo
+    document.getElementById("pantalla-bloqueo-wrapper").style.display = "none";
+    // Muestra el layout del menú y contenido
+    document.getElementById("layout-principal").style.display = "flex";
 }
 
-// Función para mostrar/ocultar la contraseña
 function togglePassword() {
     const input = document.getElementById("input-contrasena");
     const iconoAbierto = document.getElementById("icono-ojo-abierto");
@@ -44,4 +46,85 @@ function togglePassword() {
         iconoAbierto.style.display = "inline";
         iconoCerrado.style.display = "none";
     }
+}
+
+// ==========================================
+// 2. SISTEMA DE PESTAÑAS Y MENÚ MÓVIL
+// ==========================================
+function abrirPestana(idPestana) {
+    // 1. Ocultar todas las pestañas
+    const pestanas = document.querySelectorAll('.pestana');
+    pestanas.forEach(p => p.classList.remove('activa'));
+
+    // 2. Mostrar la pestaña solicitada
+    document.getElementById(idPestana).classList.add('activa');
+
+    // 3. Actualizar la clase "activo" en los botones del menú
+    const botones = document.querySelectorAll('.tab-btn');
+    botones.forEach(b => b.classList.remove('activo'));
+
+    // Buscamos el botón que acaba de ser pulsado (por su onclick) y lo marcamos
+    const btnPulsado = Array.from(botones).find(b => b.getAttribute('onclick').includes(idPestana));
+    if (btnPulsado) {
+        btnPulsado.classList.add('activo');
+    }
+
+    // 4. Si estamos en móvil, cerrar el menú lateral automáticamente al pulsar una opción
+    if (window.innerWidth <= 768) {
+        toggleMenuLateral();
+    }
+}
+
+function toggleMenuLateral() {
+    const menu = document.getElementById("menu-lateral");
+    menu.classList.toggle("abierto");
+}
+
+// ==========================================
+// 3. SOMBRERO SELECCIONADOR (FORMULARIO)
+// ==========================================
+function asignarCasa() {
+    const form = document.getElementById('form-rsvp');
+    const q1 = form.querySelector('input[name="q1"]:checked');
+    const q2 = form.querySelector('input[name="q2"]:checked');
+    const resultadoDiv = document.getElementById('resultado-sombrero');
+    const inputOculto = document.getElementById('casa-asignada');
+
+    if (!q1 || !q2) {
+        alert('¡El Sombrero necesita que respondas a las dos preguntas!');
+        return;
+    }
+
+    let puntos = { 'G': 0, 'S': 0, 'R': 0, 'H': 0 };
+    puntos[q1.value]++;
+    puntos[q2.value]++;
+
+    let casaGanadora = '';
+    let maxPuntos = -1;
+
+    for (let casa in puntos) {
+        if (puntos[casa] > maxPuntos) {
+            maxPuntos = puntos[casa];
+            casaGanadora = casa;
+        }
+    }
+
+    let nombreCasa, colorFondo;
+    switch(casaGanadora) {
+        case 'G': nombreCasa = 'Gryffindor'; colorFondo = '#740001'; break;
+        case 'S': nombreCasa = 'Slytherin'; colorFondo = '#1a472a'; break;
+        case 'R': nombreCasa = 'Ravenclaw'; colorFondo = '#0e1a40'; break;
+        case 'H': nombreCasa = 'Hufflepuff'; colorFondo = '#eeba30'; break;
+    }
+
+    resultadoDiv.textContent = '¡' + nombreCasa.toUpperCase() + '!';
+    resultadoDiv.style.backgroundColor = colorFondo;
+    if(casaGanadora === 'H') {
+        resultadoDiv.style.color = '#3d2612';
+    } else {
+        resultadoDiv.style.color = 'white';
+    }
+
+    resultadoDiv.style.display = 'block';
+    inputOculto.value = nombreCasa;
 }

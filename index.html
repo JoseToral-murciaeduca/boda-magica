@@ -8,48 +8,81 @@
 </head>
 <body>
 
-<div id="pantalla-bloqueo" class="contenedor">
-    <h2>El Retrato de la Senora Gorda</h2>
+<div id="pantalla-bloqueo-wrapper">
+    <div id="pantalla-bloqueo" class="contenedor">
+        <h2>El Retrato de la Senora Gorda</h2>
+        <div class="marco-cuadro">
+            <img src="assets/senora-gorda.jpg" alt="La Senora Gorda" class="foto-gorda">
+        </div>
+        <p>Solo los invitados con la palabra clave pueden acceder al Gran Comedor...</p>
 
-    <div class="marco-cuadro">
-        <img src="assets/senora-gorda.jpg" alt="La Senora Gorda" class="foto-gorda">
+        <div class="grupo-contrasena">
+            <input type="password" id="input-contrasena" placeholder="Di la contraseña...">
+            <button type="button" onclick="togglePassword()" class="btn-ojo">
+                <svg id="icono-ojo-abierto" class="icono-ojo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <svg id="icono-ojo-cerrado" class="icono-ojo" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                </svg>
+            </button>
+        </div>
+        <button onclick="verificarContrasena()" class="btn-magico">Revelar</button>
+        <p id="mensaje-error" style="color: #740001; display: none; margin-top: 10px;">
+            ¡Contraseña incorrecta! ¡Fuera de aquí antes de que llame a Filch!
+        </p>
     </div>
-
-    <p>Solo los invitados con la palabra clave pueden acceder al Gran Comedor...</p>
-
-    <div class="grupo-contrasena">
-        <input type="password" id="input-contrasena" placeholder="Di la contraseña...">
-        <button type="button" onclick="togglePassword()" class="btn-ojo">
-            <svg id="icono-ojo-abierto" class="icono-ojo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                <circle cx="12" cy="12" r="3"/>
-            </svg>
-            <svg id="icono-ojo-cerrado" class="icono-ojo" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-                <line x1="1" y1="1" x2="23" y2="23"/>
-            </svg>
-        </button>
-    </div>
-
-    <button onclick="verificarContrasena()" class="btn-magico">Revelar</button>
-
-    <p id="mensaje-error" style="color: #740001; display: none; margin-top: 10px;">
-        ¡Contraseña incorrecta! ¡Fuera de aquí antes de que llame a Filch!
-    </p>
 </div>
 
-<div id="contenido-magico" class="contenedor principal-ancho" style="display: none;">
-    <img src="assets/EscudoJM.png" alt="Escudo Jose y Mila" class="escudo-boda">
+<div id="layout-principal" style="display: none;">
 
-    <h1>El Juramento Inquebrantable de Jose y Mila</h1>
-    <p class="intro-magica">Nos complace invitaros a celebrar nuestro gran día. Preparad vuestras mejores túnicas.</p>
+    <button id="btn-menu-movil" onclick="toggleMenuLateral()">&#9776; Menu</button>
 
-    <div class="grid-informacion">
+    <aside id="menu-lateral">
+        <button class="btn-cerrar-menu" onclick="toggleMenuLateral()">X</button>
+        <img src="assets/EscudoJM.png" alt="Escudo Jose y Mila" class="escudo-menu">
+        <nav class="navegacion-pestanas">
+            <button class="tab-btn activo" onclick="abrirPestana('inicio')">Inicio</button>
+            <button class="tab-btn" onclick="abrirPestana('mapa')">Mapa del Merodeador</button>
+            <button class="tab-btn" onclick="abrirPestana('profeta')">El Profeta</button>
+            <button class="tab-btn btn-destacado" onclick="abrirPestana('rsvp')">Confirmar Asistencia</button>
+        </nav>
+    </aside>
 
-        <div class="tarjeta-magica">
-            <h3>Red Flu y Trasladores (Ubicacion)</h3>
+    <main id="contenido-pestanas">
 
-            <div class="mapa-merodeador">
+        <section id="inicio" class="pestana activa">
+            <h1>El Juramento Inquebrantable de Jose y Mila</h1>
+            <p class="intro-magica">Nos complace invitaros a celebrar nuestro gran día. Preparad vuestras mejores túnicas.</p>
+
+            <div class="grid-informacion">
+                <div class="tarjeta-magica">
+                    <h3>Horario de Clases (El Programa)</h3>
+                    <ul class="lista-horario">
+                        <li><span>12:00</span> - Llegada de invitados (Ceremonia)</li>
+                        <li><span>14:00</span> - Cóctel de bienvenida</li>
+                        <li><span>15:30</span> - Banquete en el Gran Comedor</li>
+                        <li><span>18:30</span> - Baile y Barra Libre</li>
+                    </ul>
+                </div>
+                <div class="tarjeta-magica">
+                    <h3>Aprendices de Mago (Ninos)</h3>
+                    <p>Nuestros pequeños estarán correteando por allí, contaremos con animadores y actividades especiales para que las nuevas generaciones de Hogwarts se lo pasen en grande.</p>
+                </div>
+                <div class="tarjeta-magica">
+                    <h3>Camara de Gringotts (Regalos)</h3>
+                    <p>Vuestra presencia es el mejor regalo, pero si deseáis ayudarnos a llenar nuestra cámara acorazada, podéis enviar vuestros galeones a la siguiente bóveda:</p>
+                    <p class="cuenta-bancaria">ESXX XXXX XXXX XXXX XXXX</p>
+                    <p class="nota-pequena"><em>Titulares: Jose y Mila</em></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="mapa" class="pestana">
+            <h1>Ubicaciones y Trasladores</h1>
+            <div class="mapa-merodeador-grande">
                 <div class="ruta-mapa">
                     <span class="lugar el-bonillo">El Bonillo</span>
                     <div class="huellas huellas-1"></div>
@@ -58,52 +91,89 @@
                     <span class="lugar fortuna">Fortuna</span>
                 </div>
             </div>
+            <div class="grid-informacion" style="margin-top: 20px;">
+                <div class="tarjeta-magica">
+                    <h3>La Ceremonia</h3>
+                    <p>Se celebrará en Fortuna a las [00:00]. En [Nombre de la Iglesia/Juzgado].</p>
+                </div>
+                <div class="tarjeta-magica">
+                    <h3>El Banquete</h3>
+                    <p>A continuación, el Gran Comedor nos espera en [Nombre de la Finca/Restaurante].</p>
+                </div>
+            </div>
+            <p class="nota-pequena" style="text-align: center;"><em>* Habrá autobuses mágicos habilitados desde El Bonillo. Os pediremos confirmación en el formulario.</em></p>
+        </section>
 
-            <p><strong>La Ceremonia:</strong> Se celebrará en Fortuna a las [00:00].</p>
-            <p><strong>El Banquete:</strong> A continuación, el Gran Comedor nos espera en [Nombre de la Finca].</p>
-            <hr class="separador-magico">
-            <p class="nota-pequena"><em>* Habrá autobuses mágicos habilitados desde El Bonillo.</em></p>
-        </div>
+        <section id="profeta" class="pestana">
+            <div class="seccion-profeta">
+                <h2 class="titulo-profeta">El Profeta Diario</h2>
+                <div class="columnas-profeta">
+                    <p><strong>¡EXTRA, EXTRA!</strong> El Ministerio de Magia confirma el enlace más esperado del año entre Jose y Mila. Se rumorea que habrá grandes banquetes y pócimas para todos.</p>
+                    <img src="assets/profeta.gif" alt="Imagen en movimiento" class="imagen-movimiento">
+                    <p><strong>Alojamiento:</strong> Para los magos y brujas que viajen desde lejos, recomendamos reservar habitación en "El Caldero Chorreante" local (Hotel [Nombre Hotel], a solo 5 minutos en escoba).</p>
+                    <p><strong>Vestimenta:</strong> Se ruega etiqueta de gala. Las túnicas de segunda mano de los hermanos Weasley están permitidas, pero intentad quitarles el olor a gnomo.</p>
+                </div>
+            </div>
+        </section>
 
-        <div class="tarjeta-magica">
-            <h3>Horario de Clases (El Programa)</h3>
-            <ul class="lista-horario">
-                <li><span>12:00</span> - Llegada de invitados</li>
-                <li><span>14:00</span> - Cóctel de bienvenida</li>
-                <li><span>15:30</span> - Banquete en el Gran Comedor</li>
-                <li><span>18:30</span> - Baile y Barra Libre</li>
-            </ul>
-        </div>
+        <section id="rsvp" class="pestana">
+            <div class="pergamino-formulario">
+                <h2>Registro en el Libro de Honor</h2>
+                <div class="subtitulo">Por favor, confirma tu asistencia antes de que la lechuza parta</div>
 
-        <div class="tarjeta-magica">
-            <h3>Aprendices de Mago (Ninos)</h3>
-            <p>Nuestros pequeños estarán correteando por allí, contaremos con animadores y actividades especiales para que las nuevas generaciones de Hogwarts se lo pasen en grande.</p>
-        </div>
+                <form action="https://formspree.io/f/mgojanjk" method="POST" id="form-rsvp">
+                    <div class="grupo-campo">
+                        <label for="nombre">Nombre y Apellidos del invitado:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej. Sirius Black" required>
+                    </div>
+                    <div class="grupo-campo">
+                        <label>¿Asistirás al banquete de gala?</label>
+                        <div class="opciones-radio">
+                            <label><input type="radio" name="asistencia" value="Asistirá" checked required> Acepto con honor</label>
+                            <label><input type="radio" name="asistencia" value="No Asistirá"> Lamento no poder asistir</label>
+                        </div>
+                    </div>
+                    <div class="grupo-campo">
+                        <label for="acompanantes">¿Cuántos magos/brujas te acompañan? (Incluyendo niños):</label>
+                        <input type="number" id="acompanantes" name="acompanantes" min="0" max="10" value="0">
+                    </div>
 
-        <div class="tarjeta-magica">
-            <h3>Camara de Gringotts (Regalos)</h3>
-            <p>Vuestra presencia es el mejor regalo, pero si deseáis ayudarnos a llenar nuestra cámara acorazada, podéis enviar vuestros galeones a la siguiente bóveda:</p>
-            <p class="cuenta-bancaria">ESXX XXXX XXXX XXXX XXXX</p>
-            <p class="nota-pequena"><em>Titulares: Jose y Mila</em></p>
-        </div>
+                    <div class="grupo-campo">
+                        <label>Test del Sombrero Seleccionador (Para tu mesa):</label>
+                        <div class="test-sombrero">
+                            <div class="pregunta-test">
+                                <strong>1. ¿Qué cualidad mágica te define más?</strong>
+                                <div class="opciones-radio">
+                                    <label><input type="radio" name="q1" value="G" required> Valentía</label>
+                                    <label><input type="radio" name="q1" value="S"> Astucia</label>
+                                    <label><input type="radio" name="q1" value="R"> Inteligencia</label>
+                                    <label><input type="radio" name="q1" value="H"> Lealtad</label>
+                                </div>
+                            </div>
+                            <div class="pregunta-test">
+                                <strong>2. El domingo prefieres...</strong>
+                                <div class="opciones-radio">
+                                    <label><input type="radio" name="q2" value="G" required> Ir a la aventura</label>
+                                    <label><input type="radio" name="q2" value="S"> Ganar a un juego</label>
+                                    <label><input type="radio" name="q2" value="R"> Leer un libro</label>
+                                    <label><input type="radio" name="q2" value="H"> Cuidar plantas/animales</label>
+                                </div>
+                            </div>
+                            <button type="button" onclick="asignarCasa()" class="btn-magico" style="font-size: 16px; padding: 5px 15px; width: 100%;">¡Sombrero, elige!</button>
+                            <div id="resultado-sombrero" class="resultado-casa"></div>
+                            <input type="hidden" id="casa-asignada" name="casa_hogwarts" value="No asignada">
+                        </div>
+                    </div>
 
-    </div>
-
-    <div class="seccion-profeta">
-        <h2 class="titulo-profeta">El Profeta Diario</h2>
-        <div class="columnas-profeta">
-            <p><strong>¡EXTRA, EXTRA!</strong> El Ministerio de Magia confirma el enlace más esperado del año. Se rumorea que habrá grandes banquetes y pócimas para todos.</p>
-
-            <img src="assets/profeta.gif" alt="Imagen en movimiento" class="imagen-movimiento">
-
-            <p><strong>Alojamiento:</strong> Para los magos y brujas que viajen desde lejos, recomendamos reservar habitación en "El Caldero Chorreante" local (Hotel [Nombre Hotel], a solo 5 minutos en escoba).</p>
-            <p><strong>Vestimenta:</strong> Se ruega etiqueta de gala. Las túnicas de segunda mano de los hermanos Weasley están permitidas, pero intentad quitarles el olor a gnomo.</p>
-        </div>
-    </div>
-
-    <div class="navegacion">
-        <a href="rsvp.html" class="btn-magico btn-gigante">Confirmar Asistencia (RSVP)</a>
-    </div>
+                    <div class="grupo-campo">
+                        <label for="restricciones">¿Alergias o pociones prohibidas?</label>
+                        <textarea id="restricciones" name="restricciones_alimenticias" rows="2" placeholder="Ej. Menú infantil, celiaco, etc."></textarea>
+                    </div>
+                    <button type="submit" class="btn-magico" style="width: 100%;">Enviar Lechuza</button>
+                </form>
+            </div>
+        </section>
+    </main>
 </div>
 
 <script src="js/main.js"></script>
