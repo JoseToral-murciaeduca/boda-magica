@@ -4,223 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmación de Asistencia - Boda Mágica</title>
-    <style>
-        /* Estilos Generales Tematizados */
-        body {
-            background-color: #1a0f10; /* Fondo oscuro místico */
-            font-family: 'Georgia', serif;
-            color: #3d2612;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
+    <link rel="stylesheet" href="css/style.css"> <style>
+    body { background-color: #1a0f10; }
+    .pergamino {
+        background: #f4ebe1;
+        background-image: radial-gradient(circle at 50% 50%, #fcf8f2 0%, #edf2e5 100%);
+        border: 2px solid #d3a625;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6), inset 0 0 40px #dfd3c3;
+        padding: 40px;
+        max-width: 550px;
+        width: 100%;
+        border-radius: 4px;
+        position: relative;
+        color: #3d2612;
+        text-align: left;
+    }
+    .pergamino h2 { text-align: center; color: #740001; }
+    .subtitulo { text-align: center; font-style: italic; margin-bottom: 30px; }
+    .grupo-campo { margin-bottom: 20px; }
+    label { display: block; font-weight: bold; margin-bottom: 8px; color: #4a0002; font-family: 'Georgia', serif;}
+    input[type="text"], input[type="number"], textarea {
+        width: 100%; padding: 10px; border: 1px solid #c5b39a; background: rgba(255,255,255,0.6);
+        border-radius: 3px; box-sizing: border-box; font-family: 'Georgia', serif;
+    }
+    .opciones-radio label { font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 5px; margin-bottom: 5px;}
 
-        /* Contenedor estilo Pergamino Antiguo */
-        .pergamino {
-            background: #f4ebe1;
-            background-image: radial-gradient(circle at 50% 50%, #fcf8f2 0%, #edf2e5 100%);
-            border: 2px solid #d3a625; /* Borde Dorado */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6), inset 0 0 40px #dfd3c3;
-            padding: 40px;
-            max-width: 550px;
-            width: 100%;
-            border-radius: 4px;
-            position: relative;
-        }
-
-        .pergamino::before {
-            content: '';
-            position: absolute;
-            top: 5px; left: 5px; right: 5px; bottom: 5px;
-            border: 1px solid #740001; /* Línea fina Burdeos */
-            pointer-events: none;
-            opacity: 0.5;
-        }
-
-        h2 {
-            text-align: center;
-            color: #740001; /* Burdeos */
-            font-size: 24px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .subtitulo {
-            text-align: center;
-            font-style: italic;
-            color: #5c4033;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-
-        /* Estructura del Formulario */
-        .grupo-campo {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #4a0002;
-            font-size: 15px;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #c5b39a;
-            background-color: rgba(255, 255, 255, 0.6);
-            font-family: 'Georgia', serif;
-            font-size: 14px;
-            color: #2b1a0a;
-            border-radius: 3px;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #740001;
-            background-color: #ffffff;
-            box-shadow: 0 0 5px rgba(116, 0, 1, 0.2);
-        }
-
-        /* Opciones de Radio Tematizadas */
-        .opciones-radio {
-            display: flex;
-            gap: 20px;
-            margin-top: 5px;
-        }
-
-        .opciones-radio label {
-            font-weight: normal;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* Botón de Envío (Hechizo) */
-        .btn-enviar {
-            background-color: #740001; /* Burdeos */
-            color: #eeba30; /* Dorado */
-            border: 2px solid #d3a625;
-            padding: 12px 24px;
-            font-family: 'Georgia', serif;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            width: 100%;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-enviar:hover {
-            background-color: #eeba30;
-            color: #740001;
-            border-color: #740001;
-            box-shadow: 0 0 12px #eeba30;
-        }
-
-        /* =========================================
-           ADAPTACIÓN PARA MÓVILES (FORMULARIO)
-           ========================================= */
-        @media screen and (max-width: 600px) {
-            body {
-                padding: 15px;
-                align-items: flex-start;
-            }
-
-            .pergamino {
-                padding: 25px 15px; /* Menos margen en los bordes del pergamino */
-            }
-
-            h2 {
-                font-size: 20px;
-            }
-
-            .opciones-radio {
-                flex-direction: column; /* En lugar de estar uno al lado del otro, se apilan verticalmente */
-                gap: 12px;
-            }
-
-            input[type="text"],
-            input[type="number"],
-            select,
-            textarea {
-                font-size: 16px; /* Evita el zoom automático en Safari/iOS */
-                padding: 12px; /* Áreas táctiles más grandes */
-            }
-        }
-    </style>
+    @media screen and (max-width: 600px) {
+        body { padding: 15px; align-items: flex-start; }
+        .pergamino { padding: 25px 15px; }
+        input[type="text"], input[type="number"], textarea { font-size: 16px; padding: 12px; }
+    }
+</style>
 </head>
 <body>
 
 <div class="pergamino">
     <h2>Registro en el Libro de Honor</h2>
-    <div class="subtitulo">Por favor, confirma tu asistencia antes de que la lechuza parta</div>
+    <div class="grupo-campo">
+        <label for="nombre">Nombre y Apellidos del invitado:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej. Sirius Black" required>
+    </div>
 
-    <form action="https://formspree.io/f/mgojanjk" method="POST">
-
-        <div class="grupo-campo">
-            <label for="nombre">Nombre y Apellidos del invitado:</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ej. Harry Potter" required>
+    <div class="grupo-campo">
+        <label>¿Asistirás al banquete de gala?</label>
+        <div class="opciones-radio">
+            <label><input type="radio" name="asistencia" value="Asistirá" checked required> Acepto con honor</label>
+            <label><input type="radio" name="asistencia" value="No Asistirá"> Lamento no poder asistir</label>
         </div>
+    </div>
 
-        <div class="grupo-campo">
-            <label>¿Asistirás al banquete de gala?</label>
-            <div class="opciones-radio">
-                <label>
-                    <input type="radio" name="asistencia" value="Asistirá" checked required>
-                    Acepto con honor
-                </label>
-                <label>
-                    <input type="radio" name="asistencia" value="No Asistirá">
-                    Lamento no poder asistir
-                </label>
+    <div class="grupo-campo">
+        <label for="acompanantes">¿Cuántos magos/brujas te acompañan? (Incluyendo niños):</label>
+        <input type="number" id="acompanantes" name="acompanantes" min="0" max="10" value="0">
+    </div>
+
+    <div class="grupo-campo">
+        <label>Test del Sombrero Seleccionador (Para tu mesa):</label>
+        <div class="test-sombrero">
+            <div class="pregunta-test">
+                <strong>1. ¿Qué cualidad mágica te define más?</strong>
+                <div class="opciones-radio">
+                    <label><input type="radio" name="q1" value="G" required> Valentía y Coraje</label>
+                    <label><input type="radio" name="q1" value="S"> Astucia y Ambición</label>
+                    <label><input type="radio" name="q1" value="R"> Inteligencia y Creatividad</label>
+                    <label><input type="radio" name="q1" value="H"> Lealtad y Trabajo duro</label>
+                </div>
             </div>
-        </div>
+            <div class="pregunta-test">
+                <strong>2. ¿Qué prefieres hacer el domingo?</strong>
+                <div class="opciones-radio">
+                    <label><input type="radio" name="q2" value="G" required> Ir a la aventura sin planear</label>
+                    <label><input type="radio" name="q2" value="S"> Ganar en juegos de mesa</label>
+                    <label><input type="radio" name="q2" value="R"> Leer un buen libro</label>
+                    <label><input type="radio" name="q2" value="H"> Cuidar las plantas o animales</label>
+                </div>
+            </div>
 
-        <div class="grupo-campo">
-            <label for="acompanantes">¿Cuántos magos/brujas te acompañan? (Incluyendo niños):</label>
-            <input type="number" id="acompanantes" name="acompanantes" min="0" max="10" value="0">
-        </div>
+            <button type="button" onclick="asignarCasa()" class="btn-magico" style="font-size: 16px; padding: 5px 15px; width: 100%;">¡Sombrero, elige!</button>
 
-        <div class="grupo-campo">
-            <label for="casa">¿A qué casa de Hogwarts perteneces? (Para tu mesa):</label>
-            <select id="casa" name="casa_hogwarts" required>
-                <option value="" disabled selected>Deja que el sombrero decida...</option>
-                <option value="Gryffindor">Gryffindor (Valor y Coraje)</option>
-                <option value="Slytherin">Slytherin (Ambición y Astucia)</option>
-                <option value="Ravenclaw">Ravenclaw (Sabiduría e Ingenio)</option>
-                <option value="Hufflepuff">Hufflepuff (Lealtad y Justicia)</option>
-            </select>
-        </div>
+            <div id="resultado-sombrero" class="resultado-casa"></div>
 
-        <div class="grupo-campo">
-            <label for="restricciones">¿Alguna restricción con las pociones o banquetes? (Alergias/Intolerancias/Vegano):</label>
-            <textarea id="restricciones" name="restricciones_alimenticias" rows="3" placeholder="Ej. Alérgico a las mandrágoras, menú infantil, etc."></textarea>
+            <input type="hidden" id="casa-asignada" name="casa_hogwarts" value="No asignada">
         </div>
+    </div>
 
-        <div class="grupo-campo">
-            <label for="musica">¿Qué canción invocará tus mejores pasos en la pista de baile?</label>
-            <input type="text" id="musica" name="cancion_sugerida" placeholder="Ej. El vals de las brujas">
-        </div>
+    <div class="grupo-campo">
+        <label for="restricciones">¿Alergias o pociones prohibidas?</label>
+        <textarea id="restricciones" name="restricciones_alimenticias" rows="2" placeholder="Ej. Menú infantil, celiaco, etc."></textarea>
+    </div>
 
-        <button type="submit" class="btn-enviar">Enviar Lechuza (Confirmar)</button>
+    <button type="submit" class="btn-magico" style="width: 100%;">Enviar Lechuza (Confirmar)</button>
     </form>
 </div>
 
+<script>
+    function asignarCasa() {
+        const form = document.getElementById('form-rsvp');
+        const q1 = form.querySelector('input[name="q1"]:checked');
+        const q2 = form.querySelector('input[name="q2"]:checked');
+        const resultadoDiv = document.getElementById('resultado-sombrero');
+        const inputOculto = document.getElementById('casa-asignada');
+
+        if (!q1 || !q2) {
+            alert('¡El Sombrero necesita que respondas a las dos preguntas!');
+            return;
+        }
+
+        // Lógica simple de asignación
+        let puntos = { 'G': 0, 'S': 0, 'R': 0, 'H': 0 };
+        puntos[q1.value]++;
+        puntos[q2.value]++;
+
+        let casaGanadora = '';
+        let maxPuntos = -1;
+
+        // Encontrar la casa con más puntos (o la primera si hay empate)
+        for (let casa in puntos) {
+            if (puntos[casa] > maxPuntos) {
+                maxPuntos = puntos[casa];
+                casaGanadora = casa;
+            }
+        }
+
+        // Asignar colores y nombres
+        let nombreCasa, colorFondo;
+        switch(casaGanadora) {
+            case 'G': nombreCasa = 'Gryffindor'; colorFondo = '#740001'; break;
+            case 'S': nombreCasa = 'Slytherin'; colorFondo = '#1a472a'; break;
+            case 'R': nombreCasa = 'Ravenclaw'; colorFondo = '#0e1a40'; break;
+            case 'H': nombreCasa = 'Hufflepuff'; colorFondo = '#eeba30'; break;
+        }
+
+        // Mostrar el resultado
+        resultadoDiv.textContent = '¡' + nombreCasa.toUpperCase() + '!';
+        resultadoDiv.style.backgroundColor = colorFondo;
+        if(casaGanadora === 'H') resultadoDiv.style.color = '#3d2612'; // Texto oscuro para fondo amarillo
+        else resultadoDiv.style.color = 'white';
+
+        resultadoDiv.style.display = 'block';
+
+        // Guardar para Formspree
+        inputOculto.value = nombreCasa;
+    }
+</script>
 </body>
 </html>

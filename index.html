@@ -10,6 +10,11 @@
 
 <div id="pantalla-bloqueo" class="contenedor">
     <h2>El Retrato de la Senora Gorda</h2>
+
+    <div class="marco-cuadro">
+        <img src="assets/senora-gorda.jpg" alt="La Senora Gorda" class="foto-gorda">
+    </div>
+
     <p>Solo los invitados con la palabra clave pueden acceder al Gran Comedor...</p>
 
     <div class="grupo-contrasena">
@@ -33,7 +38,7 @@
     </p>
 </div>
 
-<div id="contenido-magico" class="contenedor" style="display: none;">
+<div id="contenido-magico" class="contenedor principal-ancho" style="display: none;">
     <img src="assets/EscudoJM.png" alt="Escudo Jose y Mila" class="escudo-boda">
 
     <h1>El Juramento Inquebrantable de Jose y Mila</h1>
@@ -43,34 +48,57 @@
 
         <div class="tarjeta-magica">
             <h3>Red Flu y Trasladores (Ubicacion)</h3>
-            <p><strong>La Ceremonia:</strong> Se celebrará en Fortuna a las [00:00]. En [Nombre de la Iglesia/Juzgado/Finca].</p>
-            <p><strong>El Banquete:</strong> A continuación, el Gran Comedor nos espera en [Nombre de la Finca/Restaurante].</p>
+
+            <div class="mapa-merodeador">
+                <div class="ruta-mapa">
+                    <span class="lugar el-bonillo">El Bonillo</span>
+                    <div class="huellas huellas-1"></div>
+                    <span class="lugar el-banquete">El Banquete</span>
+                    <div class="huellas huellas-2"></div>
+                    <span class="lugar fortuna">Fortuna</span>
+                </div>
+            </div>
+
+            <p><strong>La Ceremonia:</strong> Se celebrará en Fortuna a las [00:00].</p>
+            <p><strong>El Banquete:</strong> A continuación, el Gran Comedor nos espera en [Nombre de la Finca].</p>
             <hr class="separador-magico">
-            <p class="nota-pequena"><em>* Habrá autobuses mágicos habilitados (sin paradas bruscas como el Autobús Noctámbulo) para los invitados que se desplacen desde El Bonillo. Más adelante os pediremos confirmación de plazas.</em></p>
+            <p class="nota-pequena"><em>* Habrá autobuses mágicos habilitados desde El Bonillo.</em></p>
         </div>
 
         <div class="tarjeta-magica">
             <h3>Horario de Clases (El Programa)</h3>
             <ul class="lista-horario">
-                <li><span>12:00</span> - Llegada de invitados (Ceremonia)</li>
-                <li><span>14:00</span> - Cóctel de bienvenida (Pociones y aperitivos)</li>
+                <li><span>12:00</span> - Llegada de invitados</li>
+                <li><span>14:00</span> - Cóctel de bienvenida</li>
                 <li><span>15:30</span> - Banquete en el Gran Comedor</li>
-                <li><span>18:30</span> - Baile del Torneo de los Tres Magos y Barra Libre</li>
+                <li><span>18:30</span> - Baile y Barra Libre</li>
             </ul>
         </div>
 
         <div class="tarjeta-magica">
             <h3>Aprendices de Mago (Ninos)</h3>
-            <p>Nuestros pequeños estarán correteando por allí, así que contaremos con animadores y actividades especiales para que las nuevas generaciones de Hogwarts se lo pasen en grande mientras los adultos disfrutan de la fiesta.</p>
+            <p>Nuestros pequeños estarán correteando por allí, contaremos con animadores y actividades especiales para que las nuevas generaciones de Hogwarts se lo pasen en grande.</p>
         </div>
 
         <div class="tarjeta-magica">
             <h3>Camara de Gringotts (Regalos)</h3>
-            <p>Vuestra presencia es el mejor regalo, pero si deseáis ayudarnos a llenar nuestra cámara acorazada para disfrutar de nuestra luna de miel, podéis enviar vuestros galeones a la siguiente bóveda:</p>
+            <p>Vuestra presencia es el mejor regalo, pero si deseáis ayudarnos a llenar nuestra cámara acorazada, podéis enviar vuestros galeones a la siguiente bóveda:</p>
             <p class="cuenta-bancaria">ESXX XXXX XXXX XXXX XXXX</p>
             <p class="nota-pequena"><em>Titulares: Jose y Mila</em></p>
         </div>
 
+    </div>
+
+    <div class="seccion-profeta">
+        <h2 class="titulo-profeta">El Profeta Diario</h2>
+        <div class="columnas-profeta">
+            <p><strong>¡EXTRA, EXTRA!</strong> El Ministerio de Magia confirma el enlace más esperado del año. Se rumorea que habrá grandes banquetes y pócimas para todos.</p>
+
+            <img src="assets/profeta.gif" alt="Imagen en movimiento" class="imagen-movimiento">
+
+            <p><strong>Alojamiento:</strong> Para los magos y brujas que viajen desde lejos, recomendamos reservar habitación en "El Caldero Chorreante" local (Hotel [Nombre Hotel], a solo 5 minutos en escoba).</p>
+            <p><strong>Vestimenta:</strong> Se ruega etiqueta de gala. Las túnicas de segunda mano de los hermanos Weasley están permitidas, pero intentad quitarles el olor a gnomo.</p>
+        </div>
     </div>
 
     <div class="navegacion">
