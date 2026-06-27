@@ -252,7 +252,7 @@ function iniciarMemoria() {
     // Barajar cartas
     cartasMemoria.sort(() => Math.random() - 0.5);
 
-    cartasMemoria.forEach((icono, index) => {
+    cartasMemoria.forEach((icono) => {
         const carta = document.createElement('div');
         carta.classList.add('carta-memoria');
         carta.dataset.icono = icono;
