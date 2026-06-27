@@ -187,3 +187,137 @@ function atraparSnitch() {
 function cerrarModal() {
     document.getElementById('modal-secreto').style.display = 'none';
 }
+
+// ==========================================
+// 5. SALA DE MENESTERES (JUEGOS Y ENTRETENIMIENTO)
+// ==========================================
+
+// --- A. RETO COLIN CREEVEY (Guardar casillas marcadas) ---
+document.addEventListener("DOMContentLoaded", () => {
+    // Al cargar la web, revisar si tenían casillas marcadas de días anteriores
+    for(let i = 1; i <= 4; i++) {
+        let checkbox = document.getElementById('m' + i);
+        if(checkbox && localStorage.getItem('mision' + i) === 'true') {
+            checkbox.checked = true;
+        }
+    }
+    // Inicializar también el juego de memoria
+    iniciarMemoria();
+});
+
+function guardarMisiones() {
+    for(let i = 1; i <= 4; i++) {
+        let checkbox = document.getElementById('m' + i);
+        if(checkbox) {
+            localStorage.setItem('mision' + i, checkbox.checked);
+        }
+    }
+}
+
+// --- B. EXÁMENES T.I.M.O. ---
+function corregirTIMOs() {
+    const q1 = document.getElementById('correcta1');
+    const q2 = document.getElementById('correcta2');
+    let aciertos = 0;
+
+    if (q1 && q1.checked) aciertos++;
+    if (q2 && q2.checked) aciertos++;
+
+    const resultado = document.getElementById('resultado-timo');
+    if (aciertos === 2) {
+        resultado.textContent = "Nota: ¡Extraordinario! (Nos conocéis a la perfección)";
+        resultado.style.color = "var(--color-secundario)";
+    } else if (aciertos === 1) {
+        resultado.textContent = "Nota: Aceptable. (Aprobado por los pelos)";
+        resultado.style.color = "white";
+    } else {
+        resultado.textContent = "Nota: Trol. (Uy... tendréis que repasar)";
+        resultado.style.color = "#ff4c4c";
+    }
+}
+
+// --- C. CROMOS DE RANAS DE CHOCOLATE (JUEGO MEMORIA) ---
+const iconosMemoria = ['⚡', '🦉', '🧹', '🏰', '💍', '🚂', '🍻', '🐍'];
+let cartasMemoria = [...iconosMemoria, ...iconosMemoria];
+let primeraCarta = null;
+let segundaCarta = null;
+let bloqueado = false;
+let parejasEncontradas = 0;
+
+function iniciarMemoria() {
+    const grid = document.getElementById('grid-memoria');
+    if(!grid) return;
+    grid.innerHTML = ''; // Limpiar grid
+
+    // Barajar cartas
+    cartasMemoria.sort(() => Math.random() - 0.5);
+
+    cartasMemoria.forEach((icono, index) => {
+        const carta = document.createElement('div');
+        carta.classList.add('carta-memoria');
+        carta.dataset.icono = icono;
+
+        // Frontal (Tapada)
+        const caraFrontal = document.createElement('div');
+        caraFrontal.classList.add('cara-frontal');
+        caraFrontal.textContent = '🐸'; // Rana de chocolate
+
+        // Trasera (Descubierta)
+        const caraTrasera = document.createElement('div');
+        caraTrasera.classList.add('cara-trasera');
+        caraTrasera.textContent = icono;
+
+        carta.appendChild(caraFrontal);
+        carta.appendChild(caraTrasera);
+
+        carta.addEventListener('click', voltearCarta);
+        grid.appendChild(carta);
+    });
+}
+
+function voltearCarta() {
+    if (bloqueado) return;
+    if (this === primeraCarta) return; // Evitar doble clic en la misma carta
+
+    this.classList.add('girada');
+
+    if (!primeraCarta) {
+        // Es la primera carta que se gira
+        primeraCarta = this;
+        return;
+    }
+
+    // Es la segunda carta que se gira
+    segundaCarta = this;
+    verificarPareja();
+}
+
+function verificarPareja() {
+    let esPareja = primeraCarta.dataset.icono === segundaCarta.dataset.icono;
+
+    if (esPareja) {
+        // Bloquearlas abiertas
+        primeraCarta.classList.add('emparejada');
+        segundaCarta.classList.add('emparejada');
+        primeraCarta.removeEventListener('click', voltearCarta);
+        segundaCarta.removeEventListener('click', voltearCarta);
+        resetearTablero();
+
+        parejasEncontradas++;
+        if(parejasEncontradas === iconosMemoria.length) {
+            document.getElementById('mensaje-memoria').style.display = 'block';
+        }
+    } else {
+        // No coinciden, girarlas de nuevo tras 1 segundo
+        bloqueado = true;
+        setTimeout(() => {
+            primeraCarta.classList.remove('girada');
+            segundaCarta.classList.remove('girada');
+            resetearTablero();
+        }, 1000);
+    }
+}
+
+function resetearTablero() {
+    [primeraCarta, segundaCarta, bloqueado] = [null, null, false];
+}
