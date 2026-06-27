@@ -18,6 +18,7 @@
     --color-primario-transparente: rgba(116, 0, 1, 0.3);
     --color-secundario: #d3a625; /* Dorado */
     --color-fondo: #1a0f10;
+    --color-menu: #140a0a; /* Fondo menú Gryffindor (Rojizo muy oscuro) */
 }
 
 body.tema-slytherin {
@@ -25,6 +26,7 @@ body.tema-slytherin {
     --color-primario-transparente: rgba(26, 71, 42, 0.3);
     --color-secundario: #a3a3a3; /* Plata */
     --color-fondo: #0a120d;
+    --color-menu: #050d08; /* Fondo menú Slytherin (Verde muy oscuro) */
 }
 
 body.tema-ravenclaw {
@@ -32,6 +34,7 @@ body.tema-ravenclaw {
     --color-primario-transparente: rgba(14, 26, 64, 0.3);
     --color-secundario: #b88645; /* Bronce */
     --color-fondo: #080c17;
+    --color-menu: #05070f; /* Fondo menú Ravenclaw (Azul muy oscuro) */
 }
 
 body.tema-hufflepuff {
@@ -39,6 +42,7 @@ body.tema-hufflepuff {
     --color-primario-transparente: rgba(38, 27, 18, 0.3);
     --color-secundario: #eeba30; /* Amarillo brillante */
     --color-fondo: #14100b;
+    --color-menu: #0d0a06; /* Fondo menú Hufflepuff (Marrón muy oscuro) */
 }
 
 /* =========================================
@@ -50,7 +54,7 @@ body {
     font-family: 'PrivetDrive', 'Georgia', serif;
     margin: 0;
     min-height: 100vh;
-    transition: background-color 0.8s ease; /* Transición mágica de fondo */
+    transition: background-color 0.8s ease;
 }
 
 /* Transiciones suaves para los elementos que cambian de color */
@@ -107,7 +111,9 @@ input:focus, textarea:focus { outline: none; }
 
 /* Menú Lateral */
 #menu-lateral {
-    width: 250px; background-color: #140a0a; border-right: 2px solid var(--color-secundario);
+    width: 250px;
+    background-color: var(--color-menu); /* AQUÍ SE APLICA LA VARIABLE MÁGICA */
+    border-right: 2px solid var(--color-secundario);
     padding: 30px 0; display: flex; flex-direction: column; align-items: center;
     position: fixed; height: 100vh; top: 0; left: 0; z-index: 1000; overflow-y: auto;
 }
@@ -122,6 +128,7 @@ input:focus, textarea:focus { outline: none; }
 .tab-btn.activo { background: var(--color-primario-transparente); border-left: 4px solid var(--color-secundario); color: var(--color-secundario); font-weight: bold; }
 .btn-destacado { color: var(--color-secundario); margin-top: 20px; border-top: 1px dashed rgba(211,166,37,0.3); padding-top: 20px; }
 
+/* (A partir de aquí mantienes tu código CSS exactamente igual: #contenido-pestanas, las tarjetas, el mapa, el profeta...) */
 /* Contenido Principal */
 #contenido-pestanas {
     margin-left: 250px;
