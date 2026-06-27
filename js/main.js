@@ -1,10 +1,16 @@
 // ==========================================
-// 1. SISTEMA DE LOGIN (SEÑORA GORDA)
+// 1. SISTEMA DE LOGIN Y TEMAS
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     // Si ya tiene el token guardado en local, entramos directamente
     if (localStorage.getItem("accesoConcedido") === "true") {
         desbloquearWeb();
+    }
+
+    // Novedad: Cargar el Tema Mágico guardado de la casa elegida
+    const temaGuardado = localStorage.getItem("temaMagico");
+    if(temaGuardado) {
+        document.body.classList.add(temaGuardado);
     }
 });
 
@@ -13,7 +19,6 @@ function verificarContrasena() {
     const contrasena = input.value.toLowerCase().trim();
     const mensajeError = document.getElementById("mensaje-error");
 
-    // Cambia 'caput draconis' por vuestra contraseña real
     if (contrasena === "caput draconis" || contrasena === "alohomora") {
         localStorage.setItem("accesoConcedido", "true");
         desbloquearWeb();
@@ -26,9 +31,7 @@ function verificarContrasena() {
 }
 
 function desbloquearWeb() {
-    // Oculta la pantalla que cubre todo
     document.getElementById("pantalla-bloqueo-wrapper").style.display = "none";
-    // Muestra el layout del menú y contenido
     document.getElementById("layout-principal").style.display = "flex";
 }
 
@@ -52,24 +55,19 @@ function togglePassword() {
 // 2. SISTEMA DE PESTAÑAS Y MENÚ MÓVIL
 // ==========================================
 function abrirPestana(idPestana) {
-    // 1. Ocultar todas las pestañas
     const pestanas = document.querySelectorAll('.pestana');
     pestanas.forEach(p => p.classList.remove('activa'));
 
-    // 2. Mostrar la pestaña solicitada
     document.getElementById(idPestana).classList.add('activa');
 
-    // 3. Actualizar la clase "activo" en los botones del menú
     const botones = document.querySelectorAll('.tab-btn');
     botones.forEach(b => b.classList.remove('activo'));
 
-    // Buscamos el botón que acaba de ser pulsado (por su onclick) y lo marcamos
     const btnPulsado = Array.from(botones).find(b => b.getAttribute('onclick').includes(idPestana));
     if (btnPulsado) {
         btnPulsado.classList.add('activo');
     }
 
-    // 4. Si estamos en móvil, cerrar el menú lateral automáticamente al pulsar una opción
     if (window.innerWidth <= 768) {
         toggleMenuLateral();
     }
@@ -81,7 +79,7 @@ function toggleMenuLateral() {
 }
 
 // ==========================================
-// 3. SOMBRERO SELECCIONADOR (FORMULARIO)
+// 3. SOMBRERO SELECCIONADOR Y TEMATIZACIÓN
 // ==========================================
 function asignarCasa() {
     const form = document.getElementById('form-rsvp');
@@ -109,16 +107,35 @@ function asignarCasa() {
         }
     }
 
-    let nombreCasa, colorFondo;
+    let nombreCasa, colorFondoResultado, claseTema;
+
+    // Novedad: Asignamos el nombre de la clase CSS de cada casa
     switch(casaGanadora) {
-        case 'G': nombreCasa = 'Gryffindor'; colorFondo = '#740001'; break;
-        case 'S': nombreCasa = 'Slytherin'; colorFondo = '#1a472a'; break;
-        case 'R': nombreCasa = 'Ravenclaw'; colorFondo = '#0e1a40'; break;
-        case 'H': nombreCasa = 'Hufflepuff'; colorFondo = '#eeba30'; break;
+        case 'G':
+            nombreCasa = 'Gryffindor';
+            colorFondoResultado = '#740001';
+            claseTema = 'tema-gryffindor'; // (Base, no hace falta clase extra pero la nombramos)
+            break;
+        case 'S':
+            nombreCasa = 'Slytherin';
+            colorFondoResultado = '#1a472a';
+            claseTema = 'tema-slytherin';
+            break;
+        case 'R':
+            nombreCasa = 'Ravenclaw';
+            colorFondoResultado = '#0e1a40';
+            claseTema = 'tema-ravenclaw';
+            break;
+        case 'H':
+            nombreCasa = 'Hufflepuff';
+            colorFondoResultado = '#eeba30';
+            claseTema = 'tema-hufflepuff';
+            break;
     }
 
+    // Mostrar el resultado dentro del pergamino
     resultadoDiv.textContent = '¡' + nombreCasa.toUpperCase() + '!';
-    resultadoDiv.style.backgroundColor = colorFondo;
+    resultadoDiv.style.backgroundColor = colorFondoResultado;
     if(casaGanadora === 'H') {
         resultadoDiv.style.color = '#3d2612';
     } else {
@@ -127,41 +144,43 @@ function asignarCasa() {
 
     resultadoDiv.style.display = 'block';
     inputOculto.value = nombreCasa;
+
+    // MAGIA: Aplicar el cambio de tema a la página
+    // 1. Limpiamos cualquier tema anterior
+    document.body.classList.remove('tema-slytherin', 'tema-ravenclaw', 'tema-hufflepuff');
+    // 2. Añadimos el nuevo (si no es el base)
+    if (claseTema !== 'tema-gryffindor') {
+        document.body.classList.add(claseTema);
+    }
+    // 3. Lo guardamos en el navegador
+    localStorage.setItem("temaMagico", claseTema);
 }
 
 // ==========================================
 // 4. EASTER EGG: LA SNITCH DORADA
 // ==========================================
-
 function lanzarSnitch() {
     const snitch = document.getElementById('snitch');
 
-    // Solo sale si ya han puesto la contraseña y están dentro de la web
     if (document.getElementById('layout-principal').style.display !== 'none') {
         snitch.style.display = 'block';
 
-        // Reiniciamos las clases de animación para que vuelva a volar desde cero
         snitch.classList.remove('volando');
-        void snitch.offsetWidth; // Truco mágico de JS para forzar el reinicio de CSS
+        void snitch.offsetWidth;
         snitch.classList.add('volando');
 
-        // La altura a la que sale es aleatoria
         snitch.style.top = Math.floor(Math.random() * 70) + 10 + '%';
     }
 
-    // Se programa para volver a salir aleatoriamente entre 20 y 45 segundos después
     const tiempoAleatorio = Math.floor(Math.random() * 25000) + 20000;
     setTimeout(lanzarSnitch, tiempoAleatorio);
 }
 
-// Iniciar el reloj de la snitch a los 10 segundos de cargar la web
 setTimeout(lanzarSnitch, 10000);
 
 function atraparSnitch() {
     const snitch = document.getElementById('snitch');
-    snitch.style.display = 'none'; // Desaparece al tocarla
-
-    // Mostramos el pergamino con el cóctel
+    snitch.style.display = 'none';
     document.getElementById('modal-secreto').style.display = 'flex';
 }
 
