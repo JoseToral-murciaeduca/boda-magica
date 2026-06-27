@@ -85,7 +85,10 @@ input:focus, textarea:focus { outline: none; }
 /* Contenido Principal */
 #contenido-pestanas {
     margin-left: 250px; /* Deja espacio para el menú fijo */
-    padding: 40px; flex-grow: 1; box-sizing: border-box; max-width: 1000px; margin-right: auto;
+    padding: 40px 5%; /* Padding dinámico para que respire por los lados */
+    flex-grow: 1;
+    box-sizing: border-box;
+    max-width: 1600px; /* Aumentamos drásticamente el límite para pantallas grandes */
 }
 .pestana { display: none; animation: fadeIn 0.5s; }
 .pestana.activa { display: block; }
