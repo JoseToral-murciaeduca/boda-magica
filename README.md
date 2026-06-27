@@ -45,7 +45,24 @@ boda-magica/
 
 ## 🚀 Instalación y Uso en Local
 * 1. Clona este repositorio:
+     ````bash
      git clone [https://github.com/JoseToral-murciaeduca/boda-magica.git](https://github.com/JoseToral-murciaeduca/boda-magica.git)
+     ````
 * 2. Entra en la carpeta del proyecto:
-     
+     ````bash
+     cd boda-magica
+     ````
 * 3. Abre el archivo index.html directamente en cualquier navegador web (Chrome, Firefox, Edge). Al ser una web completamente estática, no requiere de un servidor local (localhost) ni de Node.js para funcionar.
+
+## ⚙️ Configuración de Formspree
+Para que el formulario de RSVP funcione correctamente:
+1. Crear un formulario en Formspree.
+2. Copiar el ID único del formulario.
+3. Pergarlo en el atributo action de la etiqueta <form> dentro de index.html:
+    ````HTML
+     <form action="[https://formspree.io/f/ID_UNICO](https://formspree.io/f/ID_UNICO)" method="POST" id="form-rsvp">
+    ````  
+4. Importante por seguridad: En los ajustes de Formspree, activar "Restrict to Domain" y añadir la URL de GitHub Pages para evitar envíos de spam.
+
+## 📜 Licencia y Notas
+Proyecto de carácter personal y privado. Las tipografías y nombres relacionados con el universo de Harry Potter pertenecen a sus respectivos creadores y son utilizados aquí bajo el principio de uso personal/fan-art sin fines comerciales.
